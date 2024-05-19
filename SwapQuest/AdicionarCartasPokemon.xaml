@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwapQuest.AdicionarCartasPokemon"
+             Title="Adiciona Cartas à tua coleção">
+    <CollectionView WidthRequest="350" ItemsSource="{Binding Cartas}">
+        
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid  RowDefinitions="*,*">
+                    <Border>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,20,20"/>
+                        </Border.StrokeShape>
+                        <Grid BackgroundColor="LightGrey" Grid.Row="1" >
+                            <Image Source="{Binding Imagem}"
+                                   Aspect="AspectFill"
+                                   IsVisible="True"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="2"
+                                    Margin="0,-50,0,50">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30,30,30,30"/>
+                        </Border.StrokeShape>
+
+                        <Grid Padding="20"
+                                      BackgroundColor="{StaticResource Gray300}"
+                                      ColumnDefinitions="*,*"
+                                      RowDefinitions="*,*,*"
+                                      HeightRequest="150">
+
+                            <Label Text="{Binding PersonagemCarta}"
+                                           FontAttributes="Bold"
+                                           FontSize="20"
+                                           TextColor="White"/>
+
+                            <Label Text="{Binding NomeSerie}"
+                                           Grid.Column="2"
+                                           FontSize="18"
+                                           TextColor="White"/>
+
+                            <HorizontalStackLayout Grid.Row="2" Spacing="10" >
+                                <Label Text="{Binding AnoLancamento}"
+                                           Grid.Row="2"
+                                           Grid.Column="1"
+                                           FontSize="15"
+                                           FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+
+                            <Label Text="{Binding PrecoRef, StringFormat='{}{0} €'}"
+                                           Grid.Column="2"
+                                           Grid.Row="2"
+                                           FontSize="20"
+                                           HorizontalTextAlignment="Center"
+                                           TextColor="{StaticResource Brown}"/>
+
+                            <Button x:Name="AdicionarCartaColecao"
+                                            Text="Adicionar à coleção"
+                                            Clicked="OnAdicionarCartaClicked"
+                                            CommandParameter="{Binding}"
+                                            Grid.Column="2"
+                                            Grid.Row="2"
+                                            WidthRequest="180"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwapQuest.HistoricoTrocasPopUp"
+             Title="O seu histórico de Trocas">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Trocas}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="Carta Vendida:"/>
+                                <Label Text="{Binding NomeCartaTrocada}" FontAttributes="Bold" />
+                                <Label Text="Quantidade:"/>
+                                <Label Text="{Binding QTD_Trocada}" />
+                                <Label Text="Preço:"/>
+                                <Label Text="{Binding OpcaoTroca}" />
+
+                                <Label Text="Nome do Comprador:"/>
+                                <Label Text="{Binding NomeComprador}" />
+                                <Label Text="Contacto do Comprador:"/>
+                                <Label Text="{Binding ContactoComprador}" />
+
+                                <!-- Adicione mais labels conforme necessário para exibir outras informações da venda -->
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

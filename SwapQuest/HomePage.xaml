@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwapQuest.HomePage"
+             Title="Menu Prinicpal">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Logout"
+                    Text="Logout"
+                    HeightRequest="40"
+                    WidthRequest="80"
+                    Margin="0, 0, 0, 0" 
+                    Clicked="logoutClicked"/>
+
+            <Button x:Name="def"
+                    ImageSource="def.jpg"
+                    HeightRequest="60"
+                    WidthRequest="80"
+                    Margin="0, 0, 0, 0"
+                    BackgroundColor="White"
+                    Clicked="Definicoes"
+                    Grid.Column="1" />
+        </Grid>
+
+        <Label 
+        Text="Seja Bem-vindo à SwapQuest"
+        Style="{StaticResource Headline}"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <Image
+        Source="logo.jpg"
+        HeightRequest="200"
+        Aspect="AspectFit"
+        Margin="0, 10, 0, 0"/>
+
+        <Button x:Name="Colecoes"
+        Text="As minhas Coleções"
+        HorizontalOptions="Center"
+        WidthRequest="300"
+        Margin="0,40,0,0"
+        Clicked="VerColecoes"/>
+
+        <Button x:Name="Pesquisa"
+        Text="Pesquisar Cartas"
+        HorizontalOptions="Center"
+        WidthRequest="300"
+        Margin="0,20,0,0"
+        Clicked="ProcurarCartas"/>
+        <Button
+        Text="Troca"
+        HorizontalOptions="Center"
+        WidthRequest="300"
+        Margin="0,20,0,0"
+        Clicked="TrocaCLicked"/>
+        <Button
+        Text="Venda"
+        HorizontalOptions="Center"
+        WidthRequest="300"
+        Margin="0,20,0,0" 
+        Clicked="VendaCLicked"/>
+        <Button
+        Text="Propostas Recebidas"
+        HorizontalOptions="Center"
+        WidthRequest="300"
+        Margin="0,20,0,0" 
+        Clicked="PropostasCLicked"/>
+    </VerticalStackLayout>
+</ContentPage>

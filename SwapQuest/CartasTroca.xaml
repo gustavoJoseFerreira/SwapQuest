@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwapQuest.CartasTroca"
+             Title="As tuas Propostas de Troca">
+    <Grid RowDefinitions=".9*,.1*">
+        <CarouselView x:Name="cartasVendidasListView" ItemsSource="{Binding CartasTrocadas}"  IndicatorView="indicadorCarousel">
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout
+                ItemSpacing="0"
+                Orientation="Horizontal"
+                SnapPointsAlignment="Center"
+                SnapPointsType="MandatorySingle"/>
+            </CarouselView.ItemsLayout>
+
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="30" RowDefinitions=".8*,.2*">
+
+                        <Border StrokeThickness="10" Stroke="{StaticResource Gray400}" HeightRequest="500" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20,20,20,20"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                    Opacity=".7"
+                                    Radius="100"
+                                    Offset="0,0"/>
+                            </Border.Shadow>
+                            <Grid BackgroundColor="LightGrey" Grid.Row="1">
+                                <Image Source="{Binding imagem}"
+                                           Aspect="AspectFill"/>
+                            </Grid>
+
+                        </Border>
+
+                        <Border Grid.Row="2" Margin="0,0,0,50"
+                                    BackgroundColor="{StaticResource Gray300}"
+                                    StrokeThickness="5"
+                                    Stroke="{StaticResource Gray400}"
+                                    HeightRequest="150"
+                                    WidthRequest="380">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30,30,30,30"/>
+                            </Border.StrokeShape>
+
+                            <Grid Padding="5"
+                                      BackgroundColor="{StaticResource Gray300}"
+                                      RowDefinitions="*,*"
+                                      ColumnDefinitions="*,*"
+                                      HeightRequest="100">
+
+                                <Label Text="{Binding NomeCarta}"
+                                               HorizontalOptions="Center"
+                                               FontSize="18"
+                                               TextColor="White"/>
+
+                                <Label Text="{Binding QTD_Troca, StringFormat='Quantidade: {0}'}"
+                                               Grid.Column="1"
+                                               FontSize="18"
+                                               HorizontalOptions="Center"
+                                               TextColor="White"/>
+
+                                <Label Text="{Binding OpcaoTroca, StringFormat='Troco por: {0}'}"
+                                    Grid.Row="2"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    HeightRequest="100"
+                                    Margin="5,15,0,0"
+                                    TextColor="White"/>
+
+                                <Button Text="Eliminar" Clicked="OnEliminarClicked" CommandParameter="{Binding Id_Troca}" Grid.Row="1" Grid.Column="1"/>
+
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <IndicatorView x:Name="indicadorCarousel"
+                       Grid.Row="1"
+                       HorizontalOptions="Center"
+                       IndicatorColor="{StaticResource Gray300}"
+                       IndicatorSize="10"
+                       SelectedIndicatorColor="{StaticResource Primary}"
+                       VerticalOptions="Center"/>
+
+    </Grid>
+</ContentPage>

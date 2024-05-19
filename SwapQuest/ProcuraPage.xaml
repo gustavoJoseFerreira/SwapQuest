@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwapQuest.ProcuraPage"
+             x:Name="Page"
+             Title="Procurar Cartas">
+    
+    <Grid RowDefinitions=".04*,.46*,.05*,.45*" >
+        <!-- Lista de Trocas -->
+        <Label Text="Trocas Disponíveis" FontSize="25" Grid.Row="0" HorizontalOptions="CenterAndExpand"/>
+        <CarouselView x:Name="cartasVendidasListView" ItemsSource="{Binding CartasTrocadas}" Grid.Row="1">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="*,*" >
+
+                        <Border StrokeThickness="5" Stroke="{StaticResource Gray400}" Margin="40,190,40,100" HeightRequest="260" WidthRequest="180">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20,20,20,20"/>
+                            </Border.StrokeShape>
+                            <Grid BackgroundColor="LightGrey">
+                                <Image Source="{Binding imagem}"
+                                       Aspect="AspectFill"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="CenterAndExpand"/>
+                            </Grid>
+
+                        </Border>
+                        <Border Grid.Row="2" Margin="0,100,0,50"
+                                BackgroundColor="{StaticResource Gray300}"
+                                StrokeThickness="5"
+                                Stroke="{StaticResource Gray400}"
+                                HeightRequest="130"
+                                WidthRequest="290">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30,30,30,30"/>
+                            </Border.StrokeShape>
+
+                            <Grid Padding="10"
+                                  BackgroundColor="{StaticResource Gray300}"
+                                  RowDefinitions="*,*"
+                                  ColumnDefinitions="*,*"
+                                  HeightRequest="100">
+
+                                <Label Text="{Binding NomeCarta}"
+                                           HorizontalOptions="Center"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="White"/>
+
+                                <Label Text="{Binding QTD_Troca, StringFormat='Quantidade: {0}'}"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           TextColor="White"/>
+
+                                <Label Text="{Binding OpcaoTroca, StringFormat='Troco por: {0}'}"
+                                       Grid.Row="1"
+                                       FontSize="14"
+                                       HorizontalOptions="Center"
+                                       FontAttributes="Bold"
+                                       HeightRequest="60"
+                                       TextColor="White"/>
+
+                                <Button Text="Proposta" 
+	                                    Command="{Binding Path=BindingContext.TrocaCommand, Source={x:Reference Page}}" 
+	                                    CommandParameter="{Binding .}"
+                                        Grid.Row="1" Grid.Column="1"
+                                        Padding="0"/>
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <!-- Lista de Vendas -->
+        <Label Text="Vendas Disponíveis" FontSize="25" Grid.Row="2" HorizontalOptions="CenterAndExpand"/>
+
+        <CarouselView ItemsSource="{Binding CartasVendidas}" Grid.Row="3">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="*,*">
+                        <Border StrokeThickness="5" Stroke="{StaticResource Gray400}" Margin="40,200,40,100" HeightRequest="260" WidthRequest="180" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20,20,20,20"/>
+                            </Border.StrokeShape>
+                            <Grid BackgroundColor="LightGrey" Grid.Row="1">
+                                <Image Source="{Binding imagem}"
+                                       Aspect="AspectFill"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="2" Margin="0,50,0,0" WidthRequest="290" HeightRequest="85"
+                                BackgroundColor="{StaticResource Gray300}"
+                                StrokeThickness="5"
+                                Stroke="{StaticResource Gray400}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30,30,30,30"/>
+                            </Border.StrokeShape>
+
+
+                            <Grid Padding="15"
+                                  BackgroundColor="{StaticResource Gray300}"
+                                  ColumnDefinitions="*,*" 
+                                  RowDefinitions="*,*"
+                                  HeightRequest="100">
+
+                                <Label Text="{Binding NomeCarta}"
+                                       HorizontalOptions="Center"
+                                       FontSize="18"
+                                       TextColor="White"/>
+
+                                <Label Text="{Binding ValorVenda, StringFormat='{}{0}€'}"
+                                       Grid.Column="1"
+                                       FontSize="18"
+                                       HorizontalOptions="Center"
+                                       TextColor="White"/>
+
+                                <Label Text="{Binding QTD_Venda, StringFormat='Quantidade:  {0}'}"
+                                       Grid.Row="1"
+                                       FontSize="16"
+                                       HorizontalOptions="Center"
+                                       TextColor="White"/>
+
+                                <Button Text="Proposta" 
+									    Command="{Binding Path=BindingContext.PropostaCommand, Source={x:Reference Page}}" 
+									    CommandParameter="{Binding .}"
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Padding="0"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwapQuest.PropostasRecebidas"
+             x:Name="Page1"
+             Title="Propostas Recebidas">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Margin="10">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Histórico de vendas" Clicked="MostrarInformacoes_Clicked" HorizontalOptions="StartAndExpand"/>
+                <Button Text="Histórico de trocas" Clicked="MostrarInformacoesTroca_Clicked" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Label Text="Propostas de Compra Recebidas" HorizontalOptions="CenterAndExpand" Margin="0,10,0,10" FontSize="Large"/>
+            <ListView ItemsSource="{Binding PropostasCompra}" HasUnevenRows="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <AbsoluteLayout>
+                                   
+                                    <Image Source="envelope2.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+
+                                    <StackLayout Padding="10" Margin="40,15,0,30" Spacing="5">
+                                    <Label Text="{Binding NomeCarta}" FontSize="Medium" FontAttributes="Bold"/>
+                                    <Label Text="Nome do Comprador:" FontSize="Small" FontAttributes="Bold" />
+                                    <Label Text="{Binding NomeComprador}" FontSize="Small" />
+                                    <Label Text="Contacto do Comprador:" FontSize="Small" FontAttributes="Bold"/>
+                                    <Label Text="{Binding ContactoComprador}" FontSize="Small" />
+                                    <Button Text="Aceitar Venda" Command="{Binding Path=BindingContext.AceitarCommand, Source={x:Reference Page1}}" CommandParameter="{Binding .}" WidthRequest="250" />
+                                    <Button Text="Eliminar Proposta" Command="{Binding Path=BindingContext.EliminarCommand, Source={x:Reference Page1}}" CommandParameter="{Binding .}" />
+                                    </StackLayout>
+                                </AbsoluteLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            
+            <Label Text="Propostas de Troca Recebidas" HorizontalOptions="CenterAndExpand" Margin="0,10,0,10" FontSize="Large"/>
+            <ListView ItemsSource="{Binding PropostasTroca}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <AbsoluteLayout>
+                               
+                                <Image Source="envelope2.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+
+                                <StackLayout Padding="10" Margin="40,15,0,30" Spacing="5">
+                                    <Label Text="{Binding NomeCarta}" FontSize="Medium" FontAttributes="Bold"/>
+                                    <Label Text="Nome do Comprador:" FontSize="Small" FontAttributes="Bold" />
+                                    <Label Text="{Binding NomeComprador}" FontSize="Small" />
+                                    <Label Text="Contacto do Comprador:" FontSize="Small" FontAttributes="Bold"/>
+                                    <Label Text="{Binding ContactoCompradorTroca}" FontSize="Small" />
+                                    <Button Text="Aceitar Troca" Command="{Binding Path=BindingContext.AceitarTrocaCommand, Source={x:Reference Page1}}" CommandParameter="{Binding .}" />
+                                    <Button Text="Eliminar Proposta" Command="{Binding Path=BindingContext.EliminarTrocaCommand, Source={x:Reference Page1}}" CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </AbsoluteLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SwapQuest"
+             x:Class="SwapQuest.CartasPage"
+             Title="A tua coleção">
+    <ScrollView x:Name="scrollView">
+        <StackLayout>
+            <CollectionView WidthRequest="300"  ItemsSource="{Binding Cartas}" >
+                <CollectionView.ItemTemplate >
+                    <DataTemplate >
+                        <Frame >
+                            <StackLayout  BackgroundColor="LightGrey" Margin="10">
+                                <Image HeightRequest="300" Source="{Binding Imagem}" />
+                                <Label Text="{Binding NomeCarta}" />
+                                <Label Text="{Binding PrecoRef}" />
+                                <Label Text="{Binding Quantidade}" />
+                                <Label Text="{Binding Qualidade}" />
+                                <Label Text="{Binding Idioma}" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>
